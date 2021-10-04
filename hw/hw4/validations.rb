@@ -6,15 +6,6 @@ module Validations
     raise ArgumentError, "Length must not be less then #{min_length}" if min_length && text.size < min_length
     raise ArgumentError, "Length must not be more then #{max_length}" if max_length && text.size > max_length
   end
-
-  def valid_brackets?(text)
-    return true if text.empty?
-
-    new = text.gsub(/<>|\{\}|\[\]|\(\)/, '')
-    return false if new == text
-
-    valid_brackets?(new)
-  end
 end
 
 class User
